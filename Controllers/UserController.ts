@@ -55,3 +55,21 @@ export const login = (req: Request, res:Response) => {
         })
     }
 }
+
+/*
+Create an request for deleting users
+
+export const deleteUser = (req: Request, res:Response) => {
+    const loginRequest: LoginRequest = req.query;
+    if (!loginRequest.username || !loginRequest.password) {
+        res.send({
+            status: 400,
+            message: "Username or Password has not been provided"
+        })
+        res.send({
+            status: 200,
+            message: "Logged in successfully"
+        })
+    }
+}
+ */
