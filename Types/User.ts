@@ -1,5 +1,12 @@
+import { Task } from "./Task"
+
 export type User = {
     id: number,
-    username: string,
-    password: string
+    email: string,
+    password: string,
+    firstName?: string,
+    lastName?: string,
+    role?: string,
+    country?: string,
+    finsihedTasks?: Array<Task>
 }
