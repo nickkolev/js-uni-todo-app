@@ -1,6 +1,4 @@
-import { promises } from "fs";
 import { CreateTaskInput } from "../Types/CreateTaskInput";
-import { Task } from "../Types/Task";
 import { UpdateTaskData } from "../Types/UpdateTaskData";
 
 const mysql = require("mysql2");
