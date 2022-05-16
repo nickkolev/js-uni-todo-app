@@ -40,6 +40,7 @@ export const createUser = async (req: Request, res: Response) => {
         })
     }
 
+    
     await userModel.createUser(userData)
     res.send(userData);
 }
