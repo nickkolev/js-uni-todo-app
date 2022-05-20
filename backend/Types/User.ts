@@ -1,4 +1,4 @@
-import { Task } from "./Task"
+import { Task } from "../Types/Task";
 
 export type User = {
     id: number,

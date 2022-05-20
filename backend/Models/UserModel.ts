@@ -1,6 +1,6 @@
 import { promises } from "fs";
 import { UpdateUserData } from "../Types/UpdateUserData";
-import {User} from "../types/User";
+import { User } from "../Types/User";
 import { UserDataInput } from "../Types/UserDataInput";
 const mysql = require('mysql2');
 

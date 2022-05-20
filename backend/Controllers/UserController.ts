@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
-import {User} from "../types/User";
-import {LoginRequest} from "../types/LoginRequest";
+import { User } from "../Types/User";
+import {LoginRequest} from "../Types/LoginRequest";
 import {UserModel} from "../models/userModel";
 import { UserDataInput } from "../Types/UserDataInput";
 import { UpdateUserData } from "../Types/UpdateUserData";
