@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
+import axios from "axios";
 
 function TodoForm(props) {
   const [input, setInput] = useState(props.edit ? props.edit.value : '');
+  const [update, setUpdate] = useState(props.edit ? props.edit.value : '');
 
   const inputRef = useRef(null);
 
@@ -11,15 +13,38 @@ function TodoForm(props) {
 
   const handleChange = e => {
     setInput(e.target.value);
-  };
+  }
 
+  const handleUpdateChange = e => {
+    setUpdate(e.target.value);
+  }
+  
   const handleSubmit = e => {
     e.preventDefault();
 
-    props.onSubmit({
-      id: Math.floor(Math.random() * 10000),
-      text: input
+    axios.post("http://localhost:8082/tasks", {
+      title: input
+    })
+    .then((res) => {
+      console.log("added")
     });
+
+    setInput('');
+  };
+
+  const handleUpdate = e => {
+    e.preventDefault();
+
+    console.log(e.target.value)
+
+    let id = 3;
+    axios.put("http://localhost:8082/tasks/" + id, {
+      title: update
+    })
+    .then((res) => {
+      console.log("updated")
+    });
+
     setInput('');
   };
 
@@ -30,12 +55,12 @@ function TodoForm(props) {
           <input
             placeholder='Update your item'
             value={input}
-            onChange={handleChange}
+            onChange={handleUpdateChange}
             name='text'
             ref={inputRef}
             className='todo-input edit'
           />
-          <button onClick={handleSubmit} className='todo-button edit'>
+          <button onClick={handleUpdate} className='todo-button edit'>
             Update
           </button>
         </>
@@ -53,6 +78,7 @@ function TodoForm(props) {
             Add todo
           </button>
         </>
+        
       )}
     </form>
   );

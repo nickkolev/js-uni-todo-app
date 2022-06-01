@@ -33,15 +33,12 @@ export class TaskModel{
     async createTask(createTaskInput: CreateTaskInput):Promise<boolean> {
         const insertDataObject = [
             createTaskInput.title,
-            createTaskInput.description,
-            createTaskInput.priority,
-            (createTaskInput.creator) ? createTaskInput.creator : null,
-            (createTaskInput.dateOfCreation) ? createTaskInput.dateOfCreation : null,
-            (createTaskInput.dateOfCompletition) ? createTaskInput.dateOfCompletition : null,
-            (createTaskInput.userId) ? createTaskInput.userId : null
+            (createTaskInput.description) ? createTaskInput.description : null,
+            (createTaskInput.priority) ? createTaskInput.priority : null,
+            (createTaskInput.creator) ? createTaskInput.creator : null
         ]
 
-        await this.conn.execute(`INSERT INTO tasks (title, description, priority, creator, dateOfCreation, dateOfCompletition, userId) VALUES (?, ?, ?, ?, ?, ?, ?)`, insertDataObject);
+        await this.conn.execute(`INSERT INTO tasks (title, description, priority, creator) VALUES (?, ?, ?, ?)`, insertDataObject);
         return true;
     }
 
@@ -58,8 +55,8 @@ export class TaskModel{
         }
 
         preparedStatementData.push(id);
-        
-        await this.conn.execute(`UPDATE tasks SET ${setStatement} WHERE id = ?`, [id])
+
+        await this.conn.execute(`UPDATE tasks SET ${setStatement} WHERE id = ?`, preparedStatementData)
         return true;
     }
 

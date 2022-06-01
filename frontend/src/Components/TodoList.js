@@ -3,14 +3,6 @@ import TodoForm from "./TodoForm";
 import Todo from "./Todo";
 import axios from "axios";
 
-import {
-  getAllTasks,
-  createTask,
-  getTaskByIdRequest,
-  updateTaskRequest,
-  deleteTaskRequest,
-} from "../services/to-do-services";
-
 function TodoList() {
   const [todos, setTodos] = useState([]);
   const [newTask, setNewTask] = useState([]);
@@ -19,33 +11,34 @@ function TodoList() {
     axios.get("http://localhost:8082/tasks").then((res) => {
       setTodos(res.data);
     });
+    console.log(todos);
   }, []);
 
   const addTodo = (todo) => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
       return;
     } else {
-      let task = {
-
-      }
+      
     }
   };
 
   const updateTodo = (todoId, newValue) => {
-    if (!newValue.text || /^\s*$/.test(newValue.text)) {
-      return;
-    }
+     if (!newValue.text || /^\s*$/.test(newValue.text)) {
+       return;
+     }
 
-    setTodos((prev) =>
-      prev.map((item) => (item.id === todoId ? newValue : item))
-    );
+     axios.put("http://localhost:8082/tasks/" + todoId, {
+       title: newValue
+     }).then((res) => {
+      setTodos(res.data);
+    });
   };
 
   const removeTodo = (id) => {
-    const removedArr = [...todos].filter((todo) => todo.id !== id);
-
-    setTodos(removedArr);
-  };
+    axios.delete("http://localhost:8082/tasks/" + id).then((res) => {
+      setTodos(res.data);
+    });
+  }
 
   const completeTodo = (id) => {
     let updatedTodos = todos.map((todo) => {

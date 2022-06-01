@@ -15,20 +15,24 @@ import MenuItem from "@mui/material/MenuItem";
 
 const pages = [
   {
-    url: "/home",
+    url: "http://localhost:3000/home",
     name: "Home",
   },
   {
-    url: "/about",
+    url: "http://localhost:3000/about",
     name: "About",
   },
   {
-    url: "/todo",
+    url: "http://localhost:3000/todo",
     name: "To Do List",
   },
   {
-    url: "/contact",
+    url: "http://localhost:3000/contact",
     name: "Contact",
+  },
+  {
+    url: "http://localhost:3000/sign-in",
+    name: "Sign in",
   },
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];

@@ -55,20 +55,6 @@ export const createTask = async (req: Request, res: Response) => {
             message: "Title not provided"
         })
     }
-
-    if(!taskData.description) {
-        return res.send({
-            status: 400,
-            message: "Description not provided"
-        })
-    }
-
-    if(!taskData.priority) {
-        return res.send({
-            status: 400,
-            message: "Priority not provided"
-        })
-    }
     
     await taskModel.createTask(taskData);
     res.send(taskData);
@@ -87,10 +73,7 @@ export const updateTask = async (req: Request, res:Response) => {
             message: `Task with id ${id} was updated successfully.`
         });
     } catch (e) {
-        res.send({
-            status:403,
-            message: "Error! Task was not updated."
-        })
+        res.send(e)
     }
 }
 

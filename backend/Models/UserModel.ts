@@ -43,7 +43,7 @@ export class UserModel{
             preparedStatementData.push(updateUserDataArray[i][1]);
         }
         preparedStatementData.push(id);
-        await this.conn.execute(`UPDATE users SET ${setStatement} WHERE id = ?`, [id])
+        await this.conn.execute(`UPDATE users SET ${setStatement} WHERE id = ?`, preparedStatementData)
         return true;
     }
 
