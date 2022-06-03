@@ -7,6 +7,7 @@ function TodoForm(props) {
 
   const inputRef = useRef(null);
 
+  //useEffect - React hook, izpulnqva se vednaj pri purvonachalnoto zarejdane na stranicata
   useEffect(() => {
     inputRef.current.focus();
   });
@@ -20,8 +21,10 @@ function TodoForm(props) {
   }
   
   const handleSubmit = e => {
+    // prevent default - ne prezarejda stranicata
     e.preventDefault();
 
+    //axios - library, s pomoshtta na koqto izprashtame zaqvki kum BE
     axios.post("http://localhost:8082/tasks", {
       title: input
     })

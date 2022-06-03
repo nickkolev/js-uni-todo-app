@@ -12,22 +12,14 @@ function TodoList() {
       setTodos(res.data);
     });
     console.log(todos);
+    
   }, []);
-
-  const addTodo = (todo) => {
-    if (!todo.text || /^\s*$/.test(todo.text)) {
-      return;
-    } else {
-      
-    }
-  };
-
-  const updateTodo = (todoId, newValue) => {
+  
+  const updateTodo = (id, newValue) => {
      if (!newValue.text || /^\s*$/.test(newValue.text)) {
        return;
      }
-
-     axios.put("http://localhost:8082/tasks/" + todoId, {
+     axios.put("http://localhost:8082/tasks/" + id, {
        title: newValue
      }).then((res) => {
       setTodos(res.data);
@@ -53,7 +45,7 @@ function TodoList() {
   return (
     <>
       <h1>What's the Plan for Today?</h1>
-      <TodoForm onSubmit={addTodo}/>
+      <TodoForm />
       <Todo
         todos={todos}
         completeTodo={completeTodo}
