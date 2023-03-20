@@ -3,8 +3,6 @@ import TodoForm from "./TodoForm";
 import Todo from "./Todo";
 import axios from "axios";
 
-//adding to main now 
-
 function TodoList() {
   const [todos, setTodos] = useState([]);
   const [newTask, setNewTask] = useState([]);
