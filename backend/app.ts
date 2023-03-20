@@ -7,9 +7,8 @@ const app: Application = express();
 
 const cors = require('cors')
 app.use(cors())
-
 app.use(json());
-//app.use('/', require('./routes/index'));
+
 app.use("/", userRoutes);
 app.use("/", taskRoutes);
 

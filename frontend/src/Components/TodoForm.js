@@ -40,7 +40,6 @@ function TodoForm(props) {
 
     console.log(e.target.value)
 
-    let id = 3;
     axios.put("http://localhost:8082/tasks/" + id, {
       title: update
     })
